@@ -1,0 +1,964 @@
+:root {
+  --ink: #111b25;
+  --ink-2: #172635;
+  --ink-3: #223447;
+  --gold: #caa66a;
+  --gold-light: #ead7ac;
+  --paper: #f6f1e8;
+  --white: #fffdf8;
+  --muted: #667380;
+  --line: rgba(202, 166, 106, 0.28);
+  --shadow: 0 24px 70px rgba(6, 12, 19, 0.18);
+}
+ 
+* {
+  box-sizing: border-box;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+ 
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Inter", Arial, sans-serif;
+}
+ 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ 
+img {
+  display: block;
+  max-width: 100%;
+}
+ 
+/* ─── HEADER ─── */
+ 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 78px;
+  padding: 12px clamp(18px, 5vw, 72px);
+  color: var(--white);
+  background: rgba(17, 27, 37, 0.94);
+  border-bottom: 1px solid rgba(234, 215, 172, 0.16);
+  backdrop-filter: blur(16px);
+}
+ 
+.brand {
+  display: inline-flex;
+  align-items: center;
+  width: 88px;
+  height: 54px;
+  overflow: hidden;
+}
+ 
+.brand img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  object-position: center;
+}
+ 
+.main-nav {
+  display: flex;
+  gap: clamp(16px, 3vw, 34px);
+  color: rgba(255, 253, 248, 0.78);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+ 
+.main-nav a:hover {
+  color: var(--gold-light);
+}
+ 
+.header-action,
+.button,
+.contact-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  font-weight: 700;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+ 
+.header-action {
+  color: var(--ink);
+  background: var(--gold-light);
+}
+ 
+.header-action:hover,
+.button:hover,
+.contact-form button:hover {
+  transform: translateY(-2px);
+}
+ 
+/* ─── HERO ─── */
+ 
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(330px, 0.96fr);
+  gap: clamp(36px, 6vw, 80px);
+  min-height: calc(100vh - 78px);
+  padding: clamp(56px, 8vw, 100px) clamp(18px, 5vw, 72px) 52px;
+  color: var(--white);
+  background:
+    linear-gradient(120deg, rgba(17, 27, 37, 0.96), rgba(17, 27, 37, 0.74)),
+    radial-gradient(circle at 84% 16%, rgba(202, 166, 106, 0.26), transparent 30%),
+    var(--ink);
+  overflow: hidden;
+}
+ 
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(246, 241, 232, 0), var(--paper));
+  pointer-events: none;
+}
+ 
+.hero-copy,
+.hero-panel {
+  position: relative;
+  z-index: 1;
+}
+ 
+.hero-copy {
+  align-self: center;
+  max-width: 760px;
+}
+ 
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+ 
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  line-height: 0.98;
+}
+ 
+h1 {
+  max-width: 760px;
+  font-size: clamp(3.4rem, 7vw, 6.9rem);
+}
+ 
+h2 {
+  font-size: clamp(2.25rem, 4vw, 4.5rem);
+}
+ 
+h3 {
+  font-size: 2rem;
+}
+ 
+.hero-text {
+  max-width: 640px;
+  margin: 28px 0 0;
+  color: rgba(255, 253, 248, 0.78);
+  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+  line-height: 1.75;
+}
+ 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+ 
+.button.primary {
+  color: var(--ink);
+  background: var(--gold-light);
+}
+ 
+.button.secondary {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+ 
+.hero-panel {
+  align-self: center;
+  padding: 24px;
+  border: 1px solid rgba(234, 215, 172, 0.22);
+  border-radius: 8px;
+  background: rgba(7, 13, 20, 0.38);
+  box-shadow: var(--shadow);
+}
+ 
+.hero-panel img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+ 
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+ 
+.hero-stats div {
+  padding: 16px 12px;
+  border: 1px solid rgba(234, 215, 172, 0.18);
+  border-radius: 6px;
+  background: rgba(255, 253, 248, 0.05);
+}
+ 
+.hero-stats strong {
+  display: block;
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1;
+}
+ 
+.hero-stats span {
+  display: block;
+  margin-top: 7px;
+  color: rgba(255, 253, 248, 0.68);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+ 
+/* ─── TRUST BAR ─── */
+ 
+.trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  color: var(--white);
+  background: var(--gold);
+}
+ 
+.trust-bar span {
+  padding: 20px clamp(14px, 3vw, 28px);
+  background: var(--ink-2);
+  font-weight: 700;
+  text-align: center;
+}
+ 
+/* ─── SECTIONS ─── */
+ 
+.section,
+.method,
+.contact-section {
+  padding: clamp(70px, 9vw, 118px) clamp(18px, 5vw, 72px);
+}
+ 
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: end;
+}
+ 
+.intro p:last-child,
+.method-copy p,
+.contact-section p,
+.team-profile p,
+.quote-block p,
+.practice-card p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+ 
+.section-heading {
+  max-width: 820px;
+  margin-bottom: clamp(30px, 5vw, 54px);
+}
+ 
+/* ─── PRACTICE GRID ─── */
+ 
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+ 
+.practice-card {
+  position: relative;
+  display: block;
+  min-height: 312px;
+  padding: 26px;
+  border: 1px solid rgba(17, 27, 37, 0.09);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 16px 36px rgba(17, 27, 37, 0.08);
+  overflow: hidden;
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.practice-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms ease;
+}
+
+.practice-card:hover {
+  border-color: rgba(202, 166, 106, 0.5);
+  box-shadow: 0 24px 54px rgba(17, 27, 37, 0.14);
+  transform: translateY(-8px);
+}
+
+.practice-card:hover::after {
+  transform: scaleX(1);
+}
+ 
+.practice-card span {
+  display: inline-block;
+  margin-bottom: 40px;
+  color: var(--gold);
+  font-weight: 800;
+}
+ 
+.practice-card h3 {
+  margin-bottom: 16px;
+}
+
+.practice-card strong {
+  display: inline-flex;
+  margin-top: 18px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── SCROLL ANIMATIONS ─── */
+
+.reveal,
+.reveal-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal-card {
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal.is-visible,
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-card,
+  .practice-card,
+  .button,
+  .header-action,
+  .contact-form button {
+    transition: none;
+  }
+}
+ 
+/* ─── METHOD ─── */
+ 
+.method {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(300px, 1fr);
+  gap: clamp(30px, 6vw, 80px);
+  color: var(--white);
+  background: var(--ink);
+}
+ 
+.method-copy {
+  align-self: center;
+}
+ 
+.method-copy h2 {
+  margin-bottom: 24px;
+}
+ 
+.timeline {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ 
+.timeline li {
+  padding: 26px;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: rgba(255, 253, 248, 0.06);
+}
+ 
+.timeline strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+}
+ 
+.timeline span {
+  color: rgba(255, 253, 248, 0.7);
+  line-height: 1.65;
+}
+ 
+/* ─── TEAM (sección original — se mantiene por compatibilidad) ─── */
+ 
+.team-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1fr);
+  gap: 24px;
+}
+ 
+.team-profile,
+.quote-block {
+  padding: clamp(26px, 4vw, 42px);
+  border-radius: 8px;
+}
+ 
+.team-profile {
+  color: var(--white);
+  background: var(--ink-2);
+}
+ 
+.profile-mark {
+  display: grid;
+  place-items: center;
+  width: 108px;
+  height: 108px;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+ 
+.team-profile p {
+  color: rgba(255, 253, 248, 0.72);
+}
+ 
+.quote-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(17, 27, 37, 0.09);
+  background: var(--white);
+}
+ 
+.quote-block p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.9rem);
+  line-height: 1.05;
+  color: var(--ink);
+}
+ 
+.quote-block span {
+  margin-top: 24px;
+  color: var(--gold);
+  font-weight: 800;
+}
+ 
+/* ══════════════════════════════════════════════════════════════
+   EQUIPO — PERFILES DE ABOGADOS (sección nueva)
+   ══════════════════════════════════════════════════════════════
+ 
+   DÓNDE CAMBIAR COLORES:
+   - Fondo del encabezado de tarjeta (.lawyer-card-top): cambia "background: var(--ink-2)"
+   - Color del avatar circular (.lawyer-avatar): cambia "background" y "color"
+   - Color de las etiquetas (.lawyer-tag): cambia "background" y "color"
+   - Color del borde izquierdo en stats (.lawyer-stats): cambia "border-left"
+ 
+   CÓMO AGREGAR FOTO EN LUGAR DE INICIALES:
+   1. En el HTML, reemplaza <div class="lawyer-avatar">XX</div>
+      por <img class="lawyer-avatar-img" src="./tu-foto.jpg" alt="Nombre">
+   2. Agrega este CSS:
+      .lawyer-avatar-img {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top;
+        border: 2px solid var(--gold);
+        flex-shrink: 0;
+      }
+   ══════════════════════════════════════════════════════════════ */
+ 
+.lawyers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-bottom: 22px;
+}
+ 
+.lawyer-card {
+  border: 1px solid rgba(17, 27, 37, 0.09);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 16px 36px rgba(17, 27, 37, 0.07);
+}
+ 
+/* Encabezado oscuro de la tarjeta */
+.lawyer-card-top {
+  background: var(--ink-2);       /* ← cambia el color de fondo del encabezado aquí */
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+ 
+/* Avatar circular con iniciales */
+.lawyer-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(202, 166, 106, 0.16);   /* ← fondo del avatar */
+  border: 1px solid rgba(202, 166, 106, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);                 /* ← color de las iniciales */
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+ 
+.lawyer-meta h3 {
+  color: var(--white);
+  font-size: 1.6rem;
+  margin: 0 0 5px;
+  line-height: 1.05;
+}
+ 
+/* Cargo / especialidad */
+.lawyer-role {
+  color: var(--gold);              /* ← color del cargo */
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+ 
+/* Cuerpo de la tarjeta */
+.lawyer-card-body {
+  padding: 24px 28px 26px;
+}
+ 
+.lawyer-bio {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  margin: 0 0 18px;
+}
+ 
+/* Etiquetas de especialidad */
+.lawyer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+ 
+.lawyer-tag {
+  background: rgba(202, 166, 106, 0.12);   /* ← fondo de etiquetas */
+  border: 1px solid rgba(202, 166, 106, 0.3);
+  border-radius: 4px;
+  color: #8c6d35;                           /* ← texto de etiquetas */
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+ 
+/* Estadísticas (años / casos) */
+.lawyer-stats {
+  display: flex;
+  gap: 28px;
+  border-top: 1px solid rgba(17, 27, 37, 0.08);
+  padding-top: 18px;
+}
+ 
+.lawyer-stat strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.9rem;
+  color: var(--ink);
+  line-height: 1;
+}
+ 
+.lawyer-stat span {
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.4;
+  margin-top: 4px;
+  display: block;
+}
+ 
+/* Bloque de cita de la firma */
+.team-quote-block {
+  background: var(--ink-2);
+  border-radius: 8px;
+  padding: clamp(28px, 4vw, 44px) clamp(28px, 5vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+ 
+.team-quote-block p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  color: var(--white);
+  line-height: 1.15;
+  margin: 0;
+  max-width: 680px;
+}
+ 
+.team-quote-block span {
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+ 
+/* ══════════════════════════════════════════════════════════════
+   FIN ESTILOS EQUIPO
+   ══════════════════════════════════════════════════════════════ */
+ 
+/* ─── CONTACT ─── */
+ 
+.contact-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 0.7fr);
+  gap: clamp(30px, 6vw, 78px);
+  align-items: start;
+  background: #ebe3d4;
+}
+ 
+.contact-section h2 {
+  margin-bottom: 20px;
+}
+ 
+.contact-form {
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(17, 27, 37, 0.1);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 20px 48px rgba(17, 27, 37, 0.1);
+}
+ 
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink-3);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+ 
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(17, 27, 37, 0.16);
+  border-radius: 4px;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: #fbf8f1;
+  font: inherit;
+}
+ 
+.contact-form textarea {
+  resize: vertical;
+}
+ 
+.contact-form button {
+  width: 100%;
+  border: 0;
+  color: var(--white);
+  background: var(--ink);
+  cursor: pointer;
+}
+ 
+/* ─── FOOTER ─── */
+ 
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 26px clamp(18px, 5vw, 72px);
+  color: rgba(255, 253, 248, 0.74);
+  background: #0d151e;
+}
+ 
+.site-footer img {
+  width: 66px;
+  height: 42px;
+  object-fit: cover;
+}
+ 
+.site-footer p {
+  margin: 0;
+}
+ 
+.site-footer a {
+  color: var(--gold-light);
+  font-weight: 800;
+}
+
+/* ─── PRACTICE DETAIL PAGES ─── */
+
+.detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.62fr);
+  gap: clamp(30px, 6vw, 76px);
+  align-items: center;
+  min-height: 62vh;
+  padding: clamp(62px, 9vw, 112px) clamp(18px, 5vw, 72px);
+  color: var(--white);
+  background:
+    linear-gradient(120deg, rgba(17, 27, 37, 0.96), rgba(17, 27, 37, 0.78)),
+    radial-gradient(circle at 85% 12%, rgba(202, 166, 106, 0.24), transparent 32%),
+    var(--ink);
+}
+
+.detail-hero h1 {
+  max-width: 820px;
+}
+
+.detail-hero p {
+  max-width: 670px;
+  color: rgba(255, 253, 248, 0.76);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.detail-mark {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid rgba(234, 215, 172, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.05);
+  box-shadow: var(--shadow);
+}
+
+.detail-mark img {
+  width: min(82%, 360px);
+  border-radius: 6px;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.45fr);
+  gap: clamp(28px, 6vw, 76px);
+  padding: clamp(66px, 9vw, 112px) clamp(18px, 5vw, 72px);
+}
+
+.detail-content h2 {
+  margin-bottom: 18px;
+}
+
+.detail-content p,
+.detail-list li,
+.detail-side p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.detail-list {
+  display: grid;
+  gap: 14px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-list li {
+  padding: 18px 20px;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(17, 27, 37, 0.06);
+}
+
+.detail-side {
+  align-self: start;
+  padding: 28px;
+  border-radius: 8px;
+  color: var(--white);
+  background: var(--ink-2);
+}
+
+.detail-side h3 {
+  margin-bottom: 14px;
+}
+
+.detail-side p {
+  color: rgba(255, 253, 248, 0.72);
+}
+
+.detail-side .button {
+  margin-top: 16px;
+}
+ 
+/* ─── RESPONSIVE ─── */
+ 
+@media (max-width: 1040px) {
+  .hero,
+  .intro,
+  .method,
+  .team-layout,
+  .contact-section,
+  .detail-hero,
+  .detail-content {
+    grid-template-columns: 1fr;
+  }
+ 
+  .hero {
+    min-height: auto;
+  }
+ 
+  .hero-panel {
+    max-width: 620px;
+  }
+ 
+  .practice-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ 
+  /* Equipo en tablet: una tarjeta por fila */
+  .lawyers-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .team-quote-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+ 
+@media (max-width: 760px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+ 
+  .brand {
+    width: 76px;
+  }
+ 
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.82rem;
+  }
+ 
+  .header-action {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 0.82rem;
+  }
+ 
+  h1 {
+    font-size: clamp(3rem, 16vw, 4.25rem);
+  }
+ 
+  .hero {
+    padding-top: 46px;
+  }
+ 
+  .hero-stats,
+  .trust-bar,
+  .practice-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .practice-card {
+    min-height: auto;
+  }
+ 
+  /* Equipo en móvil */
+  .lawyers-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .lawyer-card-top {
+    padding: 20px;
+  }
+ 
+  .lawyer-card-body {
+    padding: 20px;
+  }
+ 
+  .lawyer-stats {
+    gap: 20px;
+  }
+ 
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+ 
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(202, 166, 106, 0.15);
+}
+
+.contact-form button {
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contact-form button:hover {
+  background: var(--ink-2);
+}
